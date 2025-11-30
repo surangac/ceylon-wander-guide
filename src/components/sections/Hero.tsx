@@ -2,94 +2,76 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark, Utensils, Sun, Plane, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-sigiriya.jpg";
-
-const destinationsInfo = [
-  {
-    icon: Mountain,
-    title: "Cultural Triangle",
-    description: "Explore ancient ruins, UNESCO World Heritage sites including Sigiriya, Polonnaruwa, and Anuradhapura.",
-  },
-  {
-    icon: Landmark,
-    title: "Hill Country",
-    description: "Misty tea plantations, scenic train rides, and charming colonial hill stations like Nuwara Eliya and Ella.",
-  },
-  {
-    icon: Waves,
-    title: "Coastal Paradise",
-    description: "Pristine beaches from Mirissa to Trincomalee, world-class surfing, and whale watching adventures.",
-  },
-  {
-    icon: Sun,
-    title: "Wildlife Safari",
-    description: "Home to leopards, elephants, and over 430 bird species across national parks like Yala and Wilpattu.",
-  },
-];
-
-const tripTips = [
-  {
-    icon: Calendar,
-    title: "Best Time to Visit",
-    description: "December to March for the west coast; April to September for the east coast. Hill country is great year-round.",
-  },
-  {
-    icon: Plane,
-    title: "Getting There",
-    description: "Fly into Bandaranaike International Airport (CMB) near Colombo. Visa on arrival available for most nationalities.",
-  },
-  {
-    icon: Utensils,
-    title: "Local Cuisine",
-    description: "Don't miss hoppers, kottu roti, fresh seafood, and authentic Ceylon tea from the hill country estates.",
-  },
-  {
-    icon: MapPin,
-    title: "Getting Around",
-    description: "Hire a private driver, take scenic train journeys, or use tuk-tuks for short distances. Roads are improving rapidly.",
-  },
-];
-
+const destinationsInfo = [{
+  icon: Mountain,
+  title: "Cultural Triangle",
+  description: "Explore ancient ruins, UNESCO World Heritage sites including Sigiriya, Polonnaruwa, and Anuradhapura."
+}, {
+  icon: Landmark,
+  title: "Hill Country",
+  description: "Misty tea plantations, scenic train rides, and charming colonial hill stations like Nuwara Eliya and Ella."
+}, {
+  icon: Waves,
+  title: "Coastal Paradise",
+  description: "Pristine beaches from Mirissa to Trincomalee, world-class surfing, and whale watching adventures."
+}, {
+  icon: Sun,
+  title: "Wildlife Safari",
+  description: "Home to leopards, elephants, and over 430 bird species across national parks like Yala and Wilpattu."
+}];
+const tripTips = [{
+  icon: Calendar,
+  title: "Best Time to Visit",
+  description: "December to March for the west coast; April to September for the east coast. Hill country is great year-round."
+}, {
+  icon: Plane,
+  title: "Getting There",
+  description: "Fly into Bandaranaike International Airport (CMB) near Colombo. Visa on arrival available for most nationalities."
+}, {
+  icon: Utensils,
+  title: "Local Cuisine",
+  description: "Don't miss hoppers, kottu roti, fresh seafood, and authentic Ceylon tea from the hill country estates."
+}, {
+  icon: MapPin,
+  title: "Getting Around",
+  description: "Hire a private driver, take scenic train journeys, or use tuk-tuks for short distances. Roads are improving rapidly."
+}];
 export const Hero = () => {
   const [showDestinations, setShowDestinations] = useState(false);
   const [showTripPlanner, setShowTripPlanner] = useState(false);
-
-  return (
-    <>
+  return <>
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Sigiriya Lion Rock at golden hour - Sri Lanka's iconic ancient fortress"
-          className="w-full h-full object-cover"
-        />
+        <img src={heroImage} alt="Sigiriya Lion Rock at golden hour - Sri Lanka's iconic ancient fortress" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-hero" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto"
-        >
+        <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.2
+        }} className="max-w-4xl mx-auto">
           {/* Tagline */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6"
-          >
+          <motion.div initial={{
+            opacity: 0,
+            scale: 0.9
+          }} animate={{
+            opacity: 1,
+            scale: 1
+          }} transition={{
+            duration: 0.6
+          }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 mb-6">
             <Sparkles className="w-4 h-4 text-ceylon-gold" />
             <span className="text-sm font-medium text-primary-foreground">
               Discover the Pearl of the Indian Ocean
@@ -97,34 +79,46 @@ export const Hero = () => {
           </motion.div>
 
           {/* Main Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 leading-tight"
-          >
+          <motion.h1 initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.3
+          }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 leading-tight">
             Ceylon
             <span className="block text-ceylon-gold">Serendipity</span>
           </motion.h1>
 
           {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto"
-          >
+          <motion.p initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.5
+          }} className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
             Embark on an unforgettable journey through ancient temples, misty tea plantations, 
             pristine beaches, and wildlife-rich jungles of Sri Lanka.
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          <motion.div initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.7
+          }} className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl" onClick={() => setShowDestinations(true)}>
               Explore Destinations
             </Button>
@@ -134,44 +128,50 @@ export const Hero = () => {
           </motion.div>
 
           {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto"
-          >
-            {[
-              { value: "8", label: "UNESCO Sites" },
-              { value: "1,340+", label: "Wildlife Species" },
-              { value: "1,600km", label: "Coastline" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
+          <motion.div initial={{
+            opacity: 0
+          }} animate={{
+            opacity: 1
+          }} transition={{
+            duration: 1,
+            delay: 1
+          }} className="mt-16 grid grid-cols-3 gap-8 max-w-xl mx-auto">
+            {[{
+              value: "8",
+              label: "UNESCO Sites"
+            }, {
+              value: "1,340+",
+              label: "Wildlife Species"
+            }, {
+              value: "1,600km",
+              label: "Coastline"
+            }].map((stat, index) => <div key={index} className="text-center">
                 <div className="font-display text-3xl md:text-4xl font-bold text-ceylon-gold">
                   {stat.value}
                 </div>
                 <div className="text-sm text-primary-foreground/70 mt-1">{stat.label}</div>
-              </div>
-            ))}
+              </div>)}
           </motion.div>
         </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <a
-          href="#destinations"
-          className="flex flex-col items-center text-primary-foreground/70 hover:text-ceylon-gold transition-colors"
-        >
+      <motion.div initial={{
+        opacity: 0
+      }} animate={{
+        opacity: 1
+      }} transition={{
+        duration: 1,
+        delay: 1.2
+      }} className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <a href="#destinations" className="flex flex-col items-center text-primary-foreground/70 hover:text-ceylon-gold transition-colors">
           <span className="text-sm font-medium mb-2">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
+          <motion.div animate={{
+            y: [0, 8, 0]
+          }} transition={{
+            duration: 1.5,
+            repeat: Infinity
+          }}>
             <ChevronDown className="w-6 h-6" />
           </motion.div>
         </a>
@@ -189,18 +189,13 @@ export const Hero = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            {destinationsInfo.map((item, index) => (
-              <div
-                key={index}
-                className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors"
-              >
+            {destinationsInfo.map((item, index) => <div key={index} className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-ceylon-ocean/10 flex items-center justify-center mb-3">
                   <item.icon className="w-5 h-5 text-ceylon-ocean" />
                 </div>
                 <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
           <div className="mt-4 p-4 rounded-xl bg-ceylon-gold/10 border border-ceylon-gold/20">
             <p className="text-sm text-foreground">
@@ -223,18 +218,13 @@ export const Hero = () => {
             </DialogDescription>
           </DialogHeader>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            {tripTips.map((tip, index) => (
-              <div
-                key={index}
-                className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors"
-              >
+            {tripTips.map((tip, index) => <div key={index} className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
                 <div className="w-10 h-10 rounded-lg bg-ceylon-green/10 flex items-center justify-center mb-3">
                   <tip.icon className="w-5 h-5 text-ceylon-green" />
                 </div>
                 <h4 className="font-semibold text-foreground mb-1">{tip.title}</h4>
                 <p className="text-sm text-muted-foreground">{tip.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
           <div className="mt-4 p-4 rounded-xl bg-ceylon-ocean/10 border border-ceylon-ocean/20">
             <p className="text-sm text-foreground">
@@ -245,6 +235,5 @@ export const Hero = () => {
         </DialogContent>
       </Dialog>
     </section>
-    </>
-  );
+    </>;
 };

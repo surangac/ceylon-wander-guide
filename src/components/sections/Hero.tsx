@@ -88,9 +88,9 @@ export const Hero = () => {
           }} transition={{
             duration: 0.8,
             delay: 0.3
-          }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 leading-tight">
+          }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] tracking-wide">
             Ceylon
-            <span className="block text-ceylon-gold">Serendipity</span>
+            <span className="block text-ceylon-gold drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">Serendipity</span>
           </motion.h1>
 
           {/* Description */}

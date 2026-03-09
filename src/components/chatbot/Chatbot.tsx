@@ -3,12 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Loader2, Bot, User, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
+import { toast } from "sonner";
 
 interface Message {
   id: string;
   role: "user" | "assistant";
   content: string;
 }
+
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 const suggestedQuestions = [
   "What's the best time to visit Sri Lanka?",
@@ -17,18 +21,84 @@ const suggestedQuestions = [
   "Tell me about Ceylon Tea",
 ];
 
+async function streamChat({
+  messages,
+  onDelta,
+  onDone,
+  onError,
+}: {
+  messages: { role: string; content: string }[];
+  onDelta: (text: string) => void;
+  onDone: () => void;
+  onError: (err: string) => void;
+}) {
+  const resp = await fetch(CHAT_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+    },
+    body: JSON.stringify({ messages }),
+  });
+
+  if (!resp.ok) {
+    const data = await resp.json().catch(() => ({}));
+    onError(data.error || `Error ${resp.status}`);
+    return;
+  }
+
+  if (!resp.body) {
+    onError("No response stream");
+    return;
+  }
+
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    let newlineIndex: number;
+    while ((newlineIndex = buffer.indexOf("\n")) !== -1) {
+      let line = buffer.slice(0, newlineIndex);
+      buffer = buffer.slice(newlineIndex + 1);
+      if (line.endsWith("\r")) line = line.slice(0, -1);
+      if (line.startsWith(":") || line.trim() === "") continue;
+      if (!line.startsWith("data: ")) continue;
+
+      const jsonStr = line.slice(6).trim();
+      if (jsonStr === "[DONE]") break;
+
+      try {
+        const parsed = JSON.parse(jsonStr);
+        const content = parsed.choices?.[0]?.delta?.content;
+        if (content) onDelta(content);
+      } catch {
+        buffer = line + "\n" + buffer;
+        break;
+      }
+    }
+  }
+  onDone();
+}
+
 export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       role: "assistant",
-      content: "Ayubowan! 🙏 I'm the Serendipity Guide, your virtual companion for exploring Sri Lanka. Ask me anything about travel, culture, food, or local tips!",
+      content:
+        "Ayubowan! 🙏 I'm the Serendipity Guide, your virtual companion for exploring Sri Lanka. Ask me anything about travel, culture, food, or local tips!",
     },
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const assistantContentRef = useRef("");
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,37 +118,50 @@ export const Chatbot = () => {
       content: text,
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setInput("");
     setIsLoading(true);
+    assistantContentRef.current = "";
 
-    // Simulate AI response (replace with actual API call)
-    setTimeout(() => {
-      const responses: Record<string, string> = {
-        "what's the best time to visit sri lanka?": "The best time to visit Sri Lanka depends on which coast you're exploring! 🌴\n\n**West & South Coast (including Galle, Mirissa):** December to April\n**East Coast (Trincomalee, Arugam Bay):** May to September\n**Hill Country (Ella, Kandy):** January to April\n**Cultural Triangle (Sigiriya, Anuradhapura):** Year-round, but February to April is ideal\n\nThe shoulder seasons offer fewer crowds and great deals!",
-        "how much is a visa?": "Sri Lanka offers an Electronic Travel Authorization (ETA) for most nationalities! 💳\n\n**Tourist Visa (30 days):** ~$50 USD\n**Transit Visa:** ~$25 USD\n**Business Visa:** ~$65 USD\n\nYou can apply online at www.eta.gov.lk. Processing usually takes 24-48 hours. The visa can be extended for up to 90 days at the Department of Immigration in Colombo.",
-        "what should i wear at temples?": "Temple etiquette in Sri Lanka is very important! 🙏\n\n**Dress Code:**\n• Cover shoulders and knees (both men and women)\n• Remove shoes and hats before entering\n• Wear white for extra respect (especially at important temples like Temple of the Tooth)\n\n**Tips:**\n• Never pose with your back to Buddha statues\n• Don't point feet toward Buddha images\n• Some temples provide sarongs to borrow if needed",
-        "tell me about ceylon tea": "Ceylon Tea is Sri Lanka's liquid gold! ☕\n\n**History:** Introduced by the British in 1867 after a coffee blight destroyed plantations.\n\n**Regions & Flavors:**\n• **Nuwara Eliya:** Light, delicate, floral\n• **Dimbula:** Medium-bodied, crisp\n• **Uva:** Bold, unique wind-affected flavor\n• **Kandy:** Full-bodied, strong\n\n**Fun Fact:** Sri Lanka is the 4th largest tea producer globally, exporting to over 145 countries!\n\n**Must-Do:** Visit a tea factory in the Hill Country for tastings and tours.",
-      };
+    const chatHistory = updatedMessages
+      .filter((m) => m.id !== "welcome")
+      .map((m) => ({ role: m.role, content: m.content }));
 
-      const lowerText = text.toLowerCase();
-      let response = responses[lowerText] || 
-        "That's a wonderful question about Sri Lanka! 🌴 While I don't have the specific answer right now, I'd recommend checking local tourism resources or feel free to ask me about destinations, visa requirements, temple etiquette, or Ceylon tea!";
-
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: "assistant",
-        content: response,
-      };
-
-      setMessages((prev) => [...prev, assistantMessage]);
+    try {
+      await streamChat({
+        messages: chatHistory,
+        onDelta: (chunk) => {
+          assistantContentRef.current += chunk;
+          const content = assistantContentRef.current;
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role === "assistant" && last.id !== "welcome") {
+              return prev.map((m, i) =>
+                i === prev.length - 1 ? { ...m, content } : m
+              );
+            }
+            return [
+              ...prev,
+              { id: (Date.now() + 1).toString(), role: "assistant", content },
+            ];
+          });
+        },
+        onDone: () => setIsLoading(false),
+        onError: (err) => {
+          toast.error(err);
+          setIsLoading(false);
+        },
+      });
+    } catch (e) {
+      console.error(e);
+      toast.error("Failed to connect to the guide. Please try again.");
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
     <>
-      {/* Chat Toggle Button */}
       <motion.button
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -95,7 +178,6 @@ export const Chatbot = () => {
         <MessageCircle className="w-6 h-6 text-secondary-foreground" />
       </motion.button>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -115,7 +197,9 @@ export const Chatbot = () => {
                   <h3 className="font-display font-semibold text-primary-foreground">
                     Serendipity Guide
                   </h3>
-                  <p className="text-xs text-primary-foreground/70">Your Sri Lanka Expert</p>
+                  <p className="text-xs text-primary-foreground/70">
+                    AI-Powered Sri Lanka Expert
+                  </p>
                 </div>
               </div>
               <button
@@ -138,28 +222,40 @@ export const Chatbot = () => {
                     message.role === "user" && "flex-row-reverse"
                   )}
                 >
-                  <div className={cn(
-                    "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
-                    message.role === "assistant" ? "bg-ceylon-ocean/10" : "bg-ceylon-gold/10"
-                  )}>
+                  <div
+                    className={cn(
+                      "w-8 h-8 rounded-full flex items-center justify-center shrink-0",
+                      message.role === "assistant"
+                        ? "bg-ceylon-ocean/10"
+                        : "bg-ceylon-gold/10"
+                    )}
+                  >
                     {message.role === "assistant" ? (
                       <Bot className="w-4 h-4 text-ceylon-ocean" />
                     ) : (
                       <User className="w-4 h-4 text-ceylon-gold" />
                     )}
                   </div>
-                  <div className={cn(
-                    "max-w-[80%] rounded-2xl px-4 py-3 text-sm",
-                    message.role === "assistant"
-                      ? "bg-muted text-foreground rounded-tl-none"
-                      : "bg-ceylon-ocean text-primary-foreground rounded-tr-none"
-                  )}>
-                    <div className="whitespace-pre-wrap">{message.content}</div>
+                  <div
+                    className={cn(
+                      "max-w-[80%] rounded-2xl px-4 py-3 text-sm",
+                      message.role === "assistant"
+                        ? "bg-muted text-foreground rounded-tl-none"
+                        : "bg-ceylon-ocean text-primary-foreground rounded-tr-none"
+                    )}
+                  >
+                    {message.role === "assistant" ? (
+                      <div className="prose prose-sm max-w-none dark:prose-invert prose-p:my-1 prose-ul:my-1 prose-li:my-0.5 prose-headings:my-2">
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
+                    ) : (
+                      <div className="whitespace-pre-wrap">{message.content}</div>
+                    )}
                   </div>
                 </motion.div>
               ))}
-              
-              {isLoading && (
+
+              {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -173,7 +269,7 @@ export const Chatbot = () => {
                   </div>
                 </motion.div>
               )}
-              
+
               <div ref={messagesEndRef} />
             </div>
 

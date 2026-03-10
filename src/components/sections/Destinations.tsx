@@ -48,6 +48,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.8,
     color: "from-ceylon-gold to-ceylon-temple",
+    wikiUrl: "https://en.wikipedia.org/wiki/Kandy",
   },
   {
     id: "ella",

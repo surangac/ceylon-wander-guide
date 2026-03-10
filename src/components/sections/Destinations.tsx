@@ -93,6 +93,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.8,
     color: "from-ceylon-ocean to-ceylon-ocean-deep",
+    wikiUrl: "https://en.wikipedia.org/wiki/Galle_Fort",
   },
   {
     id: "mirissa",

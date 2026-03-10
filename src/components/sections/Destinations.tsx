@@ -245,7 +245,7 @@ export const Destinations = () => {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
       </div>

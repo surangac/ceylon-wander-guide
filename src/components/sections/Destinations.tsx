@@ -108,6 +108,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.6,
     color: "from-ceylon-ocean to-ceylon-green",
+    wikiUrl: "https://en.wikipedia.org/wiki/Mirissa",
   },
 ];
 

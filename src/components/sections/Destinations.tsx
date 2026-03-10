@@ -63,6 +63,7 @@ const destinations = [
     difficulty: "Moderate",
     rating: 4.9,
     color: "from-ceylon-green to-ceylon-ocean",
+    wikiUrl: "https://en.wikipedia.org/wiki/Ella,_Sri_Lanka",
   },
   {
     id: "yala",

@@ -39,7 +39,7 @@ export const Footer = () => {
                   Ceylon
                 </span>
                 <span className="text-xs font-medium tracking-wider text-ceylon-gold">
-                  SERENDIPITY
+                  HERITAGE GUIDE
                 </span>
               </div>
             </a>

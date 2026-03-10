@@ -33,6 +33,7 @@ const destinations = [
     difficulty: "Moderate",
     rating: 4.9,
     color: "from-ceylon-temple to-ceylon-gold",
+    wikiUrl: "https://en.wikipedia.org/wiki/Sigiriya",
   },
   {
     id: "kandy",

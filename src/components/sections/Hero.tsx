@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark, Utensils, Sun, Plane, Calendar } from "lucide-react";
+import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-sigiriya.jpg";

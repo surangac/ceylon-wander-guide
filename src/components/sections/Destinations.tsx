@@ -78,6 +78,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.7,
     color: "from-ceylon-green to-ceylon-temple",
+    wikiUrl: "https://en.wikipedia.org/wiki/Yala_National_Park",
   },
   {
     id: "galle",

@@ -33,6 +33,7 @@ const destinations = [
     difficulty: "Moderate",
     rating: 4.9,
     color: "from-ceylon-temple to-ceylon-gold",
+    wikiUrl: "https://en.wikipedia.org/wiki/Sigiriya",
   },
   {
     id: "kandy",
@@ -47,6 +48,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.8,
     color: "from-ceylon-gold to-ceylon-temple",
+    wikiUrl: "https://en.wikipedia.org/wiki/Kandy",
   },
   {
     id: "ella",
@@ -61,6 +63,7 @@ const destinations = [
     difficulty: "Moderate",
     rating: 4.9,
     color: "from-ceylon-green to-ceylon-ocean",
+    wikiUrl: "https://en.wikipedia.org/wiki/Ella,_Sri_Lanka",
   },
   {
     id: "yala",
@@ -75,6 +78,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.7,
     color: "from-ceylon-green to-ceylon-temple",
+    wikiUrl: "https://en.wikipedia.org/wiki/Yala_National_Park",
   },
   {
     id: "galle",
@@ -89,6 +93,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.8,
     color: "from-ceylon-ocean to-ceylon-ocean-deep",
+    wikiUrl: "https://en.wikipedia.org/wiki/Galle_Fort",
   },
   {
     id: "mirissa",
@@ -103,6 +108,7 @@ const destinations = [
     difficulty: "Easy",
     rating: 4.6,
     color: "from-ceylon-ocean to-ceylon-green",
+    wikiUrl: "https://en.wikipedia.org/wiki/Mirissa",
   },
 ];
 
@@ -159,10 +165,13 @@ export const Destinations = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {destinations.map((destination) => (
-            <motion.div
+            <motion.a
+              href={destination.wikiUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               key={destination.id}
               variants={itemVariants}
-              className="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-large transition-all duration-500 bg-card"
+              className="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-large transition-all duration-500 bg-card block"
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">
@@ -236,7 +245,7 @@ export const Destinations = () => {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
       </div>

@@ -22,23 +22,6 @@ const destinationsInfo = [{
   title: "Wildlife Safari",
   description: "Home to leopards, elephants, and over 430 bird species across national parks like Yala and Wilpattu."
 }];
-const tripTips = [{
-  icon: Calendar,
-  title: "Best Time to Visit",
-  description: "December to March for the west coast; April to September for the east coast. Hill country is great year-round."
-}, {
-  icon: Plane,
-  title: "Getting There",
-  description: "Fly into Bandaranaike International Airport (CMB) near Colombo. Visa on arrival available for most nationalities."
-}, {
-  icon: Utensils,
-  title: "Local Cuisine",
-  description: "Don't miss hoppers, kottu roti, fresh seafood, and authentic Ceylon tea from the hill country estates."
-}, {
-  icon: MapPin,
-  title: "Getting Around",
-  description: "Hire a private driver, take scenic train journeys, or use tuk-tuks for short distances. Roads are improving rapidly."
-}];
 export const Hero = () => {
   const [showDestinations, setShowDestinations] = useState(false);
   const { open: openTripPlanner } = useTripPlanner();

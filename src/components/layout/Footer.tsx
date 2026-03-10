@@ -39,7 +39,7 @@ export const Footer = () => {
                   Ceylon
                 </span>
                 <span className="text-xs font-medium tracking-wider text-ceylon-gold">
-                  SERENDIPITY
+                  HERITAGE GUIDE
                 </span>
               </div>
             </a>
@@ -106,7 +106,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-ceylon-gold" />
-                hello@ceylonserendipity.com
+                hello@ceylonheritageguide.com
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-ceylon-gold" />
@@ -123,7 +123,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Ceylon Serendipity. All rights reserved.
+            © {new Date().getFullYear()} Ceylon Heritage Guide. All rights reserved.
           </p>
           <div className="flex gap-6">
             {footerLinks.company.slice(2).map((link) => (

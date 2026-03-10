@@ -15,6 +15,7 @@ const navItems = [
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { open: openTripPlanner } = useTripPlanner();
 
   useEffect(() => {
     const handleScroll = () => {

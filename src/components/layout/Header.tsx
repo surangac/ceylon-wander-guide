@@ -78,7 +78,7 @@ export const Header = () => {
                 {item.label}
               </a>
             ))}
-            <Button variant={isScrolled ? "gold" : "hero"} size="default">
+            <Button variant={isScrolled ? "gold" : "hero"} size="default" onClick={openTripPlanner}>
               Plan Your Trip
             </Button>
           </div>

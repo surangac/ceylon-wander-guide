@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark, Utensils, Sun, Plane, Calendar } from "lucide-react";
+import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-sigiriya.jpg";
+import { useTripPlanner } from "@/components/trip-planner/TripPlannerContext";
 const destinationsInfo = [{
   icon: Mountain,
   title: "Cultural Triangle",
@@ -21,26 +22,9 @@ const destinationsInfo = [{
   title: "Wildlife Safari",
   description: "Home to leopards, elephants, and over 430 bird species across national parks like Yala and Wilpattu."
 }];
-const tripTips = [{
-  icon: Calendar,
-  title: "Best Time to Visit",
-  description: "December to March for the west coast; April to September for the east coast. Hill country is great year-round."
-}, {
-  icon: Plane,
-  title: "Getting There",
-  description: "Fly into Bandaranaike International Airport (CMB) near Colombo. Visa on arrival available for most nationalities."
-}, {
-  icon: Utensils,
-  title: "Local Cuisine",
-  description: "Don't miss hoppers, kottu roti, fresh seafood, and authentic Ceylon tea from the hill country estates."
-}, {
-  icon: MapPin,
-  title: "Getting Around",
-  description: "Hire a private driver, take scenic train journeys, or use tuk-tuks for short distances. Roads are improving rapidly."
-}];
 export const Hero = () => {
   const [showDestinations, setShowDestinations] = useState(false);
-  const [showTripPlanner, setShowTripPlanner] = useState(false);
+  const { open: openTripPlanner } = useTripPlanner();
   return <>
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -122,7 +106,7 @@ export const Hero = () => {
             <Button variant="hero" size="xl" onClick={() => setShowDestinations(true)}>
               Explore Destinations
             </Button>
-            <Button variant="heroOutline" size="xl" onClick={() => setShowTripPlanner(true)}>
+            <Button variant="heroOutline" size="xl" onClick={openTripPlanner}>
               Plan Your Trip
             </Button>
           </motion.div>
@@ -206,34 +190,7 @@ export const Hero = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Plan Your Trip Dialog */}
-      <Dialog open={showTripPlanner} onOpenChange={setShowTripPlanner}>
-        <DialogContent className="sm:max-w-2xl bg-card border-border">
-          <DialogHeader>
-            <DialogTitle className="font-display text-2xl md:text-3xl text-foreground">
-              Plan Your <span className="text-ceylon-ocean">Journey</span>
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground">
-              Essential tips and information to make your Sri Lankan adventure unforgettable.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            {tripTips.map((tip, index) => <div key={index} className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-ceylon-green/10 flex items-center justify-center mb-3">
-                  <tip.icon className="w-5 h-5 text-ceylon-green" />
-                </div>
-                <h4 className="font-semibold text-foreground mb-1">{tip.title}</h4>
-                <p className="text-sm text-muted-foreground">{tip.description}</p>
-              </div>)}
-          </div>
-          <div className="mt-4 p-4 rounded-xl bg-ceylon-ocean/10 border border-ceylon-ocean/20">
-            <p className="text-sm text-foreground">
-              <strong className="text-ceylon-ocean">Pro tip:</strong> The scenic train from Kandy to Ella is 
-              considered one of the most beautiful rail journeys in the world. Book tickets in advance!
-            </p>
-          </div>
-        </DialogContent>
-      </Dialog>
+
     </section>
     </>;
 };

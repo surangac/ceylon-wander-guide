@@ -165,10 +165,13 @@ export const Destinations = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {destinations.map((destination) => (
-            <motion.div
+            <motion.a
+              href={destination.wikiUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               key={destination.id}
               variants={itemVariants}
-              className="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-large transition-all duration-500 bg-card"
+              className="group relative rounded-2xl overflow-hidden shadow-soft hover:shadow-large transition-all duration-500 bg-card block"
             >
               {/* Image */}
               <div className="relative h-64 overflow-hidden">

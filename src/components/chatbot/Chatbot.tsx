@@ -92,7 +92,7 @@ export const Chatbot = () => {
       id: "welcome",
       role: "assistant",
       content:
-        "Ayubowan! 🙏 I'm the Serendipity Guide, your virtual companion for exploring Sri Lanka. Ask me anything about travel, culture, food, or local tips!",
+        "Ayubowan! 🙏 I'm the Heritage Guide, your virtual companion for exploring Sri Lanka. Ask me anything about travel, culture, food, or local tips!",
     },
   ]);
   const [input, setInput] = useState("");

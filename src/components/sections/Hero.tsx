@@ -41,7 +41,7 @@ const tripTips = [{
 }];
 export const Hero = () => {
   const [showDestinations, setShowDestinations] = useState(false);
-  const [showTripPlanner, setShowTripPlanner] = useState(false);
+  const { open: openTripPlanner } = useTripPlanner();
   return <>
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}

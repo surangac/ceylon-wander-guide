@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTripPlanner } from "@/components/trip-planner/TripPlannerContext";
 
 const navItems = [
   { label: "Home", href: "#home" },

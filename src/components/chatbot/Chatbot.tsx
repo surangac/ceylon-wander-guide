@@ -195,7 +195,7 @@ export const Chatbot = () => {
                 </div>
                 <div>
                   <h3 className="font-display font-semibold text-primary-foreground">
-                    Serendipity Guide
+                    Heritage Guide
                   </h3>
                   <p className="text-xs text-primary-foreground/70">
                     AI-Powered Sri Lanka Expert

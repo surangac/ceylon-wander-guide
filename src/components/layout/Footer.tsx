@@ -123,7 +123,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Ceylon Serendipity. All rights reserved.
+            © {new Date().getFullYear()} Ceylon Heritage Guide. All rights reserved.
           </p>
           <div className="flex gap-6">
             {footerLinks.company.slice(2).map((link) => (

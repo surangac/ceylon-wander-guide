@@ -56,7 +56,7 @@ export const Header = () => {
                 "text-xs font-medium tracking-wider transition-colors",
                 isScrolled ? "text-ceylon-gold" : "text-ceylon-gold-light"
               )}>
-                SERENDIPITY
+                HERITAGE GUIDE
               </span>
             </div>
           </a>

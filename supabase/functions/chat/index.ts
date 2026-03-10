@@ -6,7 +6,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are "The Serendipity Guide" — an incredibly knowledgeable, friendly, and patient virtual travel guide specializing in Sri Lanka.
+const SYSTEM_PROMPT = `You are "The Heritage Guide" — an incredibly knowledgeable, friendly, and patient virtual travel guide specializing in Sri Lanka.
 
 Your personality:
 - Warm and welcoming, using occasional Sinhala/Tamil greetings

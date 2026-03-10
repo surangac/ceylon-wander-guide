@@ -4,6 +4,7 @@ import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark, Utensils, Sun
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import heroImage from "@/assets/hero-sigiriya.jpg";
+import { useTripPlanner } from "@/components/trip-planner/TripPlannerContext";
 const destinationsInfo = [{
   icon: Mountain,
   title: "Cultural Triangle",

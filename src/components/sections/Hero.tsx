@@ -123,7 +123,7 @@ export const Hero = () => {
             <Button variant="hero" size="xl" onClick={() => setShowDestinations(true)}>
               Explore Destinations
             </Button>
-            <Button variant="heroOutline" size="xl" onClick={() => setShowTripPlanner(true)}>
+            <Button variant="heroOutline" size="xl" onClick={openTripPlanner}>
               Plan Your Trip
             </Button>
           </motion.div>

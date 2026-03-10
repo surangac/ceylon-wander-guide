@@ -6,6 +6,7 @@ import { MapSection } from "@/components/sections/MapSection";
 import { About } from "@/components/sections/About";
 import { Footer } from "@/components/layout/Footer";
 import { Chatbot } from "@/components/chatbot/Chatbot";
+import { TripPlanner } from "@/components/trip-planner/TripPlanner";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       </main>
       <Footer />
       <Chatbot />
+      <TripPlanner />
     </div>
   );
 };

@@ -118,7 +118,7 @@ export const Header = () => {
                     {item.label}
                   </a>
                 ))}
-                <Button variant="gold" size="lg" className="w-full">
+                <Button variant="gold" size="lg" className="w-full" onClick={() => { setIsMobileMenuOpen(false); openTripPlanner(); }}>
                   Plan Your Trip
                 </Button>
               </div>

@@ -207,34 +207,7 @@ export const Hero = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Plan Your Trip Dialog */}
-      <Dialog open={showTripPlanner} onOpenChange={setShowTripPlanner}>
-        <DialogContent className="sm:max-w-2xl bg-card border-border">
-          <DialogHeader>
-            <DialogTitle className="font-display text-2xl md:text-3xl text-foreground">
-              Plan Your <span className="text-ceylon-ocean">Journey</span>
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground">
-              Essential tips and information to make your Sri Lankan adventure unforgettable.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            {tripTips.map((tip, index) => <div key={index} className="p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
-                <div className="w-10 h-10 rounded-lg bg-ceylon-green/10 flex items-center justify-center mb-3">
-                  <tip.icon className="w-5 h-5 text-ceylon-green" />
-                </div>
-                <h4 className="font-semibold text-foreground mb-1">{tip.title}</h4>
-                <p className="text-sm text-muted-foreground">{tip.description}</p>
-              </div>)}
-          </div>
-          <div className="mt-4 p-4 rounded-xl bg-ceylon-ocean/10 border border-ceylon-ocean/20">
-            <p className="text-sm text-foreground">
-              <strong className="text-ceylon-ocean">Pro tip:</strong> The scenic train from Kandy to Ella is 
-              considered one of the most beautiful rail journeys in the world. Book tickets in advance!
-            </p>
-          </div>
-        </DialogContent>
-      </Dialog>
+
     </section>
     </>;
 };

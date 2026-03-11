@@ -5,25 +5,25 @@ const teamMembers = [
   {
     name: "Dulara Sayumdee",
     initial: "D",
-    role: "Founder & Lead Guide",
+    role: "Co-Founder",
     tagline: "Bringing Sri Lanka's hidden stories to life, one journey at a time.",
   },
   {
     name: "Sithuki Sanya",
     initial: "S",
-    role: "Cultural Experience Curator",
+    role: "Co-Founder",
     tagline: "Crafting authentic encounters with tradition, art, and local heritage.",
   },
   {
     name: "Vinuthi Thimansa",
     initial: "V",
-    role: "Adventure & Nature Specialist",
+    role: "Co-Founder",
     tagline: "Your guide to breathtaking trails, wildlife, and unforgettable sunsets.",
   },
   {
     name: "Senuthi Disansa",
     initial: "S",
-    role: "Guest Relations Manager",
+    role: "Co-Founder",
     tagline: "Ensuring every traveler feels welcomed, cared for, and inspired.",
   },
 ];

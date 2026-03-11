@@ -19,6 +19,7 @@ const Index = () => {
         <Accommodation />
         <MapSection />
         <About />
+        <Team />
       </main>
       <Footer />
       <Chatbot />

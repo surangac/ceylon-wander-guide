@@ -26,6 +26,7 @@ const destinationsInfo = [{
 export const Hero = () => {
   const [showDestinations, setShowDestinations] = useState(false);
   const { open: openTripPlanner } = useTripPlanner();
+  const navigate = useNavigate();
   return <>
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}

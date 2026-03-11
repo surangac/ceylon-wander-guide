@@ -4,6 +4,7 @@ import { Destinations } from "@/components/sections/Destinations";
 import { Accommodation } from "@/components/sections/Accommodation";
 import { MapSection } from "@/components/sections/MapSection";
 import { About } from "@/components/sections/About";
+import { Team } from "@/components/sections/Team";
 import { Footer } from "@/components/layout/Footer";
 import { Chatbot } from "@/components/chatbot/Chatbot";
 import { TripPlanner } from "@/components/trip-planner/TripPlanner";
@@ -18,6 +19,7 @@ const Index = () => {
         <Accommodation />
         <MapSection />
         <About />
+        <Team />
       </main>
       <Footer />
       <Chatbot />

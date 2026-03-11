@@ -74,7 +74,7 @@ export const Hero = () => {
             delay: 0.3
           }} className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)] tracking-wide">
             Ceylon
-            <span className="block text-ceylon-gold drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">HerittageAI</span>
+            <span className="block text-ceylon-gold drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">HeritageAI</span>
           </motion.h1>
 
           {/* Description */}

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { TripPlannerProvider } from "@/components/trip-planner/TripPlannerContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import CulturalTriangle from "./pages/CulturalTriangle";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/cultural-triangle" element={<CulturalTriangle />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

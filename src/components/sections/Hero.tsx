@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, Sparkles, MapPin, Mountain, Waves, Landmark, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-sigiriya.jpg";
 import { useTripPlanner } from "@/components/trip-planner/TripPlannerContext";
 const destinationsInfo = [{

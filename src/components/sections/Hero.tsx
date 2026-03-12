@@ -177,15 +177,21 @@ export const Hero = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             {destinationsInfo.map((item, index) => <div
                 key={index}
-                className={`p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors ${item.title === "Cultural Triangle" ? "cursor-pointer ring-1 ring-ceylon-gold/30 hover:ring-ceylon-gold/60" : ""}`}
-                onClick={item.title === "Cultural Triangle" ? () => { setShowDestinations(false); navigate("/cultural-triangle"); } : undefined}
+                className={`p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors ${
+                  (item.title === "Cultural Triangle" || item.title === "Hill Country") ? "cursor-pointer ring-1 ring-ceylon-gold/30 hover:ring-ceylon-gold/60" : ""
+                }`}
+                onClick={
+                  item.title === "Cultural Triangle" ? () => { setShowDestinations(false); navigate("/cultural-triangle"); } :
+                  item.title === "Hill Country" ? () => { setShowDestinations(false); navigate("/hill-country"); } :
+                  undefined
+                }
               >
                 <div className="w-10 h-10 rounded-lg bg-ceylon-ocean/10 flex items-center justify-center mb-3">
                   <item.icon className="w-5 h-5 text-ceylon-ocean" />
                 </div>
                 <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
-                {item.title === "Cultural Triangle" && (
+                {(item.title === "Cultural Triangle" || item.title === "Hill Country") && (
                   <span className="inline-block mt-2 text-xs font-semibold text-ceylon-gold">Explore →</span>
                 )}
               </div>)}

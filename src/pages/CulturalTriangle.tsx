@@ -291,74 +291,9 @@ const CulturalTriangle = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="max-w-2xl mx-auto"
+            className="max-w-4xl mx-auto"
           >
-            <div className="relative bg-ceylon-ocean/10 rounded-3xl p-8 md:p-12 border border-ceylon-ocean/20">
-              <svg viewBox="0 0 100 100" className="w-full max-w-md mx-auto">
-                {/* Triangle connecting the sites */}
-                <polygon
-                  points="45,22 62,35 50,35"
-                  fill="none"
-                  stroke="hsl(40 95% 55%)"
-                  strokeWidth="0.5"
-                  strokeDasharray="2 2"
-                  opacity="0.6"
-                />
-                <polygon
-                  points="45,22 55,38 62,35"
-                  fill="hsl(40 95% 55% / 0.08)"
-                  stroke="none"
-                />
-
-                {/* Map pins */}
-                {mapLocations.map((loc) => (
-                  <g
-                    key={loc.name}
-                    onMouseEnter={() => setHoveredMap(loc.name)}
-                    onMouseLeave={() => setHoveredMap(null)}
-                    className="cursor-pointer"
-                  >
-                    <circle cx={loc.x} cy={loc.y} r="3" fill="hsl(40 95% 55%)" opacity="0.3">
-                      <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
-                      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite" />
-                    </circle>
-                    <circle cx={loc.x} cy={loc.y} r="2" fill="hsl(40 95% 55%)" stroke="white" strokeWidth="0.5" />
-                    <text
-                      x={loc.x}
-                      y={loc.y - 4}
-                      textAnchor="middle"
-                      className="text-[3px] font-semibold"
-                      fill="hsl(215 80% 25%)"
-                    >
-                      {loc.name}
-                    </text>
-
-                    {hoveredMap === loc.name && (
-                      <foreignObject x={loc.x - 15} y={loc.y + 4} width="30" height="12">
-                        <div className="bg-ceylon-ocean-deep text-white text-[4px] rounded px-1 py-0.5 text-center shadow-md">
-                          {loc.description}
-                        </div>
-                      </foreignObject>
-                    )}
-                  </g>
-                ))}
-              </svg>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                {mapLocations.map((loc) => (
-                  <a
-                    key={loc.name}
-                    href={`https://www.google.com/maps/search/?api=1&query=${loc.name}+Sri+Lanka`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-3 rounded-xl bg-background hover:bg-ceylon-gold/10 border border-border hover:border-ceylon-gold/40 transition-all text-sm"
-                  >
-                    <MapPin className="w-4 h-4 text-ceylon-gold shrink-0" />
-                    <span className="text-foreground font-medium">{loc.name}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
+            <GoogleMapSection />
           </motion.div>
         </div>
       </section>

@@ -66,12 +66,6 @@ const galleryImages = [
   { src: galleryIrrigation, alt: "Ancient irrigation reservoir", caption: "Ancient Reservoir" },
 ];
 
-const mapLocations = [
-  { name: "Sigiriya", x: 55, y: 38, description: "Lion Rock Fortress" },
-  { name: "Anuradhapura", x: 45, y: 22, description: "Sacred Ancient Capital" },
-  { name: "Polonnaruwa", x: 62, y: 35, description: "Medieval Capital" },
-  { name: "Dambulla", x: 50, y: 35, description: "Cave Temple Complex" },
-];
 
 const CulturalTriangle = () => {
   const navigate = useNavigate();

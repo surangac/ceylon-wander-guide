@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, MapPin, Landmark, Crown, BookOpen, Droplets, ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { GoogleMapSection } from "@/components/sections/GoogleMapSection";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 

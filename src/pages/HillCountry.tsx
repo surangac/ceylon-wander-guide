@@ -4,8 +4,8 @@ import { ChevronDown, Mountain, TreePine, Train, Coffee, Droplets, Eye, MapPin, 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 import heroImg from "@/assets/hill-country-hero.jpg";
 import introImg from "@/assets/hill-intro.jpg";

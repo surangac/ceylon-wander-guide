@@ -81,7 +81,7 @@ const CulturalTriangle = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [hoveredMap, setHoveredMap] = useState<string | null>(null);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);

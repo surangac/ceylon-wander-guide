@@ -7,6 +7,7 @@ import { TripPlannerProvider } from "@/components/trip-planner/TripPlannerContex
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CulturalTriangle from "./pages/CulturalTriangle";
+import HillCountry from "./pages/HillCountry";
 
 const queryClient = new QueryClient();
 

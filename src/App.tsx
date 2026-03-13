@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import CulturalTriangle from "./pages/CulturalTriangle";
 import HillCountry from "./pages/HillCountry";
 import CoastalParadise from "./pages/CoastalParadise";
+import WildlifeSafari from "./pages/WildlifeSafari";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/cultural-triangle" element={<CulturalTriangle />} />
             <Route path="/hill-country" element={<HillCountry />} />
             <Route path="/coastal-paradise" element={<CoastalParadise />} />
+            <Route path="/wildlife-safari" element={<WildlifeSafari />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

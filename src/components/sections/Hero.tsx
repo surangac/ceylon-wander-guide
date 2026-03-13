@@ -193,7 +193,7 @@ export const Hero = () => {
                 </div>
                 <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
-                {(item.title === "Cultural Triangle" || item.title === "Hill Country" || item.title === "Coastal Paradise") && (
+                {(item.title === "Cultural Triangle" || item.title === "Hill Country" || item.title === "Coastal Paradise" || item.title === "Wildlife Safari") && (
                   <span className="inline-block mt-2 text-xs font-semibold text-ceylon-gold">Explore →</span>
                 )}
               </div>)}

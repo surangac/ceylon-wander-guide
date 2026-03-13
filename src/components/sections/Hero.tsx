@@ -184,6 +184,7 @@ export const Hero = () => {
                   item.title === "Cultural Triangle" ? () => { setShowDestinations(false); navigate("/cultural-triangle"); } :
                   item.title === "Hill Country" ? () => { setShowDestinations(false); navigate("/hill-country"); } :
                   item.title === "Coastal Paradise" ? () => { setShowDestinations(false); navigate("/coastal-paradise"); } :
+                  item.title === "Wildlife Safari" ? () => { setShowDestinations(false); navigate("/wildlife-safari"); } :
                   undefined
                 }
               >

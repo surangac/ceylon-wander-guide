@@ -183,6 +183,7 @@ export const Hero = () => {
                 onClick={
                   item.title === "Cultural Triangle" ? () => { setShowDestinations(false); navigate("/cultural-triangle"); } :
                   item.title === "Hill Country" ? () => { setShowDestinations(false); navigate("/hill-country"); } :
+                  item.title === "Coastal Paradise" ? () => { setShowDestinations(false); navigate("/coastal-paradise"); } :
                   undefined
                 }
               >

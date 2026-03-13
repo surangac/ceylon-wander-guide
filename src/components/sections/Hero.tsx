@@ -178,12 +178,13 @@ export const Hero = () => {
             {destinationsInfo.map((item, index) => <div
                 key={index}
                 className={`p-4 rounded-xl bg-muted/50 hover:bg-muted transition-colors ${
-                  (item.title === "Cultural Triangle" || item.title === "Hill Country" || item.title === "Coastal Paradise") ? "cursor-pointer ring-1 ring-ceylon-gold/30 hover:ring-ceylon-gold/60" : ""
+                  (item.title === "Cultural Triangle" || item.title === "Hill Country" || item.title === "Coastal Paradise" || item.title === "Wildlife Safari") ? "cursor-pointer ring-1 ring-ceylon-gold/30 hover:ring-ceylon-gold/60" : ""
                 }`}
                 onClick={
                   item.title === "Cultural Triangle" ? () => { setShowDestinations(false); navigate("/cultural-triangle"); } :
                   item.title === "Hill Country" ? () => { setShowDestinations(false); navigate("/hill-country"); } :
                   item.title === "Coastal Paradise" ? () => { setShowDestinations(false); navigate("/coastal-paradise"); } :
+                  item.title === "Wildlife Safari" ? () => { setShowDestinations(false); navigate("/wildlife-safari"); } :
                   undefined
                 }
               >
@@ -192,7 +193,7 @@ export const Hero = () => {
                 </div>
                 <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
-                {(item.title === "Cultural Triangle" || item.title === "Hill Country" || item.title === "Coastal Paradise") && (
+                {(item.title === "Cultural Triangle" || item.title === "Hill Country" || item.title === "Coastal Paradise" || item.title === "Wildlife Safari") && (
                   <span className="inline-block mt-2 text-xs font-semibold text-ceylon-gold">Explore →</span>
                 )}
               </div>)}

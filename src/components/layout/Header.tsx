@@ -4,6 +4,7 @@ import { Menu, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTripPlanner } from "@/components/trip-planner/TripPlannerContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -16,6 +17,26 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { open: openTripPlanner } = useTripPlanner();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
+
+  const handleNavClick = (href: string) => {
+    if (isHome) {
+      const el = document.querySelector(href);
+      el?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/" + href);
+    }
+  };
+
+  const handleLogoClick = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +58,7 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
+          <a href="#home" onClick={(e) => { e.preventDefault(); handleLogoClick(); }} className="flex items-center gap-2 group cursor-pointer">
             <div className={cn(
               "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300",
               isScrolled ? "bg-ceylon-ocean" : "bg-primary-foreground/20 backdrop-blur-sm"
@@ -69,8 +90,9 @@ export const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
                 className={cn(
-                  "relative font-medium transition-colors hover:text-ceylon-gold",
+                  "relative font-medium transition-colors hover:text-ceylon-gold cursor-pointer",
                   isScrolled ? "text-foreground" : "text-primary-foreground",
                   "after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-ceylon-gold after:transition-all after:duration-300 hover:after:w-full"
                 )}
@@ -109,9 +131,9 @@ export const Header = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleNavClick(item.href); }}
                     className={cn(
-                      "block py-2 font-medium transition-colors",
+                      "block py-2 font-medium transition-colors cursor-pointer",
                       isScrolled ? "text-foreground hover:text-ceylon-gold" : "text-primary-foreground hover:text-ceylon-gold"
                     )}
                   >

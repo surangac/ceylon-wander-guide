@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, MapPin, Landmark, Crown, BookOpen, Droplets, ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, MapPin, Landmark, Crown, BookOpen, Droplets, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { GoogleMapSection } from "@/components/sections/GoogleMapSection";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 import heroImg from "@/assets/cultural-triangle-hero.jpg";
 import sigiriyaImg from "@/assets/sigiriya-climb.jpg";
@@ -92,21 +94,7 @@ const CulturalTriangle = () => {
 
   return (
     <div className="min-h-screen bg-ceylon-sand">
-      {/* Back Button */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="fixed top-6 left-6 z-50"
-      >
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => navigate("/")}
-          className="bg-background/80 backdrop-blur-sm border border-border hover:bg-background rounded-full w-12 h-12 shadow-medium"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Button>
-      </motion.div>
+      <Header />
 
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative h-screen overflow-hidden flex items-center justify-center">
@@ -510,6 +498,8 @@ const CulturalTriangle = () => {
           </motion.div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

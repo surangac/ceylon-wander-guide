@@ -4,6 +4,7 @@ import { Menu, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useTripPlanner } from "@/components/trip-planner/TripPlannerContext";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
   { label: "Home", href: "#home" },

@@ -58,7 +58,7 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
+          <a href="#home" onClick={(e) => { e.preventDefault(); handleLogoClick(); }} className="flex items-center gap-2 group cursor-pointer">
             <div className={cn(
               "w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300",
               isScrolled ? "bg-ceylon-ocean" : "bg-primary-foreground/20 backdrop-blur-sm"

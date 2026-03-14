@@ -498,6 +498,8 @@ const CulturalTriangle = () => {
           </motion.div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

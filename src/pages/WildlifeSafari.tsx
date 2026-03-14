@@ -193,8 +193,8 @@ const WildlifeSafari = () => {
                   </div>
                   <CardContent className="p-6">
                     <p className="text-muted-foreground leading-relaxed mb-4">{park.description}</p>
-                    <Button variant="ghost" className="text-ceylon-green hover:text-ceylon-green hover:bg-ceylon-green/10 p-0 h-auto font-semibold">
-                      Learn More →
+                    <Button variant="ghost" className="text-ceylon-green hover:text-ceylon-green hover:bg-ceylon-green/10 p-0 h-auto font-semibold" asChild>
+                      <a href={park.wiki} target="_blank" rel="noopener noreferrer">Learn More →</a>
                     </Button>
                   </CardContent>
                 </Card>

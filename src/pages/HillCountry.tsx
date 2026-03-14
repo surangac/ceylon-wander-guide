@@ -27,24 +27,28 @@ const destinations = [
     subtitle: "Little England",
     image: nuwaraEliyaImg,
     description: "Known as 'Little England,' Nuwara Eliya captivates with its cool climate, manicured gardens, colonial architecture, and endless tea estates stretching across emerald hillsides.",
+    wiki: "https://en.wikipedia.org/wiki/Nuwara_Eliya",
   },
   {
     name: "Ella",
     subtitle: "Mountain Paradise",
     image: ellaImg,
     description: "A beloved mountain town offering stunning viewpoints, the iconic Nine Arches Bridge, world-class hiking trails, and a laid-back atmosphere that makes visitors never want to leave.",
+    wiki: "https://en.wikipedia.org/wiki/Ella,_Sri_Lanka",
   },
   {
     name: "Kandy",
     subtitle: "Sacred Heritage City",
     image: kandyImg,
     description: "Sri Lanka's cultural capital, surrounded by mountains and home to the sacred Temple of the Tooth. A city where ancient traditions meet misty highland beauty.",
+    wiki: "https://en.wikipedia.org/wiki/Kandy",
   },
   {
     name: "Horton Plains",
     subtitle: "World's End",
     image: hortonImg,
     description: "A dramatic national park featuring cloud forests, rare wildlife, and the breathtaking 880-meter drop at World's End — one of the most spectacular viewpoints in Asia.",
+    wiki: "https://en.wikipedia.org/wiki/Horton_Plains_National_Park",
   },
 ];
 
@@ -190,8 +194,8 @@ const HillCountry = () => {
                   </div>
                   <CardContent className="p-6">
                     <p className="text-muted-foreground leading-relaxed mb-4">{dest.description}</p>
-                    <Button variant="ghost" className="text-ceylon-green hover:text-ceylon-green hover:bg-ceylon-green/10 p-0 h-auto font-semibold">
-                      Discover More →
+                    <Button variant="ghost" className="text-ceylon-green hover:text-ceylon-green hover:bg-ceylon-green/10 p-0 h-auto font-semibold" asChild>
+                      <a href={dest.wiki} target="_blank" rel="noopener noreferrer">Discover More →</a>
                     </Button>
                   </CardContent>
                 </Card>

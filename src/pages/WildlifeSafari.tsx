@@ -26,24 +26,28 @@ const parks = [
     subtitle: "Leopard Capital of the World",
     image: yalaImg,
     description: "Sri Lanka's most famous wildlife sanctuary boasts the highest density of leopards in the world. Spanning over 97,000 hectares, Yala is home to elephants, crocodiles, and over 200 bird species.",
+    wiki: "https://en.wikipedia.org/wiki/Yala_National_Park",
   },
   {
     name: "Wilpattu National Park",
     subtitle: "Land of Natural Lakes",
     image: wilpattuImg,
     description: "The largest national park in Sri Lanka, Wilpattu is renowned for its unique natural lakes called 'villus.' This untouched wilderness shelters leopards, sloth bears, and a rich variety of birdlife.",
+    wiki: "https://en.wikipedia.org/wiki/Wilpattu_National_Park",
   },
   {
     name: "Udawalawe National Park",
     subtitle: "Elephant Kingdom",
     image: udawalaweImg,
     description: "Home to nearly 600 wild elephants, Udawalawe offers some of the best elephant sightings in Asia. The park's open grasslands make spotting wildlife remarkably easy.",
+    wiki: "https://en.wikipedia.org/wiki/Udawalawe_National_Park",
   },
   {
     name: "Minneriya National Park",
     subtitle: "The Great Gathering",
     image: minneriyaImg,
     description: "Famous for 'The Gathering' — one of the world's greatest wildlife spectacles where over 300 elephants converge around the ancient Minneriya reservoir during the dry season.",
+    wiki: "https://en.wikipedia.org/wiki/Minneriya_National_Park",
   },
 ];
 
@@ -189,8 +193,8 @@ const WildlifeSafari = () => {
                   </div>
                   <CardContent className="p-6">
                     <p className="text-muted-foreground leading-relaxed mb-4">{park.description}</p>
-                    <Button variant="ghost" className="text-ceylon-green hover:text-ceylon-green hover:bg-ceylon-green/10 p-0 h-auto font-semibold">
-                      Learn More →
+                    <Button variant="ghost" className="text-ceylon-green hover:text-ceylon-green hover:bg-ceylon-green/10 p-0 h-auto font-semibold" asChild>
+                      <a href={park.wiki} target="_blank" rel="noopener noreferrer">Learn More →</a>
                     </Button>
                   </CardContent>
                 </Card>

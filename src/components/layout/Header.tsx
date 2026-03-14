@@ -26,7 +26,13 @@ export const Header = () => {
       const el = document.querySelector(href);
       el?.scrollIntoView({ behavior: "smooth" });
     } else {
+      // Navigate to homepage with hash — Index will handle scrolling
       navigate("/" + href);
+      // Fallback: after navigation, try scrolling
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
   };
 

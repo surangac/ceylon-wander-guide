@@ -131,9 +131,9 @@ export const Header = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); handleNavClick(item.href); }}
                     className={cn(
-                      "block py-2 font-medium transition-colors",
+                      "block py-2 font-medium transition-colors cursor-pointer",
                       isScrolled ? "text-foreground hover:text-ceylon-gold" : "text-primary-foreground hover:text-ceylon-gold"
                     )}
                   >

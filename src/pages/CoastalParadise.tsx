@@ -26,24 +26,28 @@ const destinations = [
     subtitle: "Whale Watching Capital",
     image: mirissaImg,
     description: "Famous for its stunning crescent-shaped beach, Mirissa is Sri Lanka's premier whale watching destination. Spot blue whales, dolphins, and sea turtles in the warm Indian Ocean waters.",
+    wiki: "https://en.wikipedia.org/wiki/Mirissa",
   },
   {
     name: "Unawatuna",
     subtitle: "Coral Bay Paradise",
     image: unawatunaImg,
     description: "Known for its pristine coral reef and calm turquoise waters, Unawatuna is a sheltered bay perfect for snorkeling, diving, and relaxing under swaying palm trees.",
+    wiki: "https://en.wikipedia.org/wiki/Unawatuna",
   },
   {
     name: "Trincomalee",
     subtitle: "Eastern Jewel",
     image: trincomaleeImg,
     description: "Home to some of the most beautiful beaches on Sri Lanka's eastern coast. Nilaveli and Uppuveli offer crystal-clear waters, excellent diving, and untouched natural beauty.",
+    wiki: "https://en.wikipedia.org/wiki/Trincomalee",
   },
   {
     name: "Arugam Bay",
     subtitle: "Surfer's Paradise",
     image: arugamBayImg,
     description: "Ranked among the world's top 10 surfing spots, Arugam Bay draws wave riders from across the globe. Its laid-back vibe and perfect point breaks create an unforgettable surf experience.",
+    wiki: "https://en.wikipedia.org/wiki/Arugam_Bay",
   },
 ];
 

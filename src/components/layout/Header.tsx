@@ -90,8 +90,9 @@ export const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
                 className={cn(
-                  "relative font-medium transition-colors hover:text-ceylon-gold",
+                  "relative font-medium transition-colors hover:text-ceylon-gold cursor-pointer",
                   isScrolled ? "text-foreground" : "text-primary-foreground",
                   "after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-ceylon-gold after:transition-all after:duration-300 hover:after:w-full"
                 )}

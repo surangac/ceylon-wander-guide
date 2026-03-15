@@ -6,7 +6,23 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are "The Heritage Guide" — an incredibly knowledgeable, friendly, and patient virtual travel guide specializing in Sri Lanka.
+const LANGUAGE_NAMES: Record<string, string> = {
+  en: "English",
+  si: "Sinhala (සිංහල)",
+  ta: "Tamil (தமிழ்)",
+};
+
+function buildSystemPrompt(language: string): string {
+  const langName = LANGUAGE_NAMES[language] || "English";
+
+  const langInstruction =
+    language === "en"
+      ? "Respond in English."
+      : language === "si"
+      ? "You MUST respond ONLY in Sinhala script (සිංහල). Do NOT use English unless quoting a proper noun."
+      : "You MUST respond ONLY in Tamil script (தமிழ்). Do NOT use English unless quoting a proper noun.";
+
+  return `You are "The Heritage Guide" — an incredibly knowledgeable, friendly, and patient virtual travel guide specializing in Sri Lanka.
 
 Your personality:
 - Warm and welcoming, using occasional Sinhala/Tamil greetings
@@ -23,7 +39,10 @@ Your knowledge covers:
 - History: ancient kingdoms, colonial era, independence
 - Practical tips: currency, safety, SIM cards, health
 
+The user's selected language is ${langName}. ${langInstruction}
+
 Always be helpful and accurate. If you're unsure about something, say so honestly. Keep responses well-structured with markdown formatting (bold, bullet points, headers) for readability.`;
+}
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -31,7 +50,7 @@ serve(async (req) => {
   }
 
   try {
-    const { messages } = await req.json();
+    const { messages, language = "en" } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
@@ -46,7 +65,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-3-flash-preview",
           messages: [
-            { role: "system", content: SYSTEM_PROMPT },
+            { role: "system", content: buildSystemPrompt(language) },
             ...messages,
           ],
           stream: true,
